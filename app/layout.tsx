@@ -10,7 +10,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'Haneen.',
   description: 'Professional portfolio showcasing skills, projects, and experience in full stack web development',
-  generator: 'v0.app',
+
   icons: {
     icon: [
       {
