@@ -16,7 +16,7 @@ export default function Projects() {
       title: 'Clothing E-commerce Platform | Alyara',
       description: 'Developed a responsive Arabian clothing e-commerce platform with 26+ products and dynamic category browsing. Implemented a real-time cart with LocalStorage support, improving session continuity by 40%. Integrated Gemini AI chatbot, boosting user engagement by 30%.',
       technologies: ['Next.js 16', 'React 18', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Google Gemini AI', 'React Context API'],
-      link: '#',
+      link: 'https://alyaraclothing.vercel.app/',
       github: 'https://github.com/haneenckm/arabian-clothing',
       date: 'Jun 2025 - Jul 2025',
     },
