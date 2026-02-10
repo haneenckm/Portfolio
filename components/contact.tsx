@@ -27,29 +27,38 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Using Web3Forms for easy email integration
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: "c5bd56b1-7632-4f44-8f16-2141ec6e667d",
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      }),
-    });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "c5bd56b1-7632-4f44-8f16-2141ec6e667d",
+          name: formData.name,
+          email: formData.email,
+          subject: `New Message from ${formData.name}: ${formData.subject}`,
+          from_name: "Haneen Portfolio",
+          message: formData.message,
+        }),
+      });
 
-    const result = await response.json();
-    if (result.success) {
-      setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setSubmitted(false), 5000);
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        console.error("Submission failed:", result.message);
+        alert("Oops! Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      alert("Network error! Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   const contactMethods = [
@@ -118,6 +127,7 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="bg-card border border-border rounded-lg p-8 space-y-6">
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">Name</label>
