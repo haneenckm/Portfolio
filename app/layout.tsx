@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: 'Haneen.',
   description: 'Professional portfolio showcasing skills, projects, and experience in full stack web development',
 
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Haneen.',
+  },
   icons: {
     icon: [
       {
