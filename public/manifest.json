@@ -3,7 +3,9 @@
     "short_name": "Haneen",
     "description": "Professional portfolio showcasing skills, projects, and experience in full stack web development",
     "start_url": "/",
+    "scope": "/",
     "display": "standalone",
+    "orientation": "portrait",
     "background_color": "#ffffff",
     "theme_color": "#000000",
     "icons": [
